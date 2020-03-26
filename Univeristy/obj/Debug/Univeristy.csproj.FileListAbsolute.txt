@@ -1,0 +1,7 @@
+C:\Users\Zaicew\source\repos\Univeristy\Univeristy\obj\Debug\Univeristy.csprojAssemblyReference.cache
+C:\Users\Zaicew\source\repos\Univeristy\Univeristy\obj\Debug\Univeristy.csproj.CoreCompileInputs.cache
+C:\Users\Zaicew\source\repos\Univeristy\Univeristy\bin\Debug\Univeristy.exe.config
+C:\Users\Zaicew\source\repos\Univeristy\Univeristy\bin\Debug\Univeristy.exe
+C:\Users\Zaicew\source\repos\Univeristy\Univeristy\bin\Debug\Univeristy.pdb
+C:\Users\Zaicew\source\repos\Univeristy\Univeristy\obj\Debug\Univeristy.exe
+C:\Users\Zaicew\source\repos\Univeristy\Univeristy\obj\Debug\Univeristy.pdb
