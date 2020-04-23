@@ -12,63 +12,78 @@ namespace Univeristy
         List<Subject> subjectList = new List<Subject>();
         List<Student> studentList = new List<Student>();
 
-        //public bool AddUnit(string name_, string address_)
-        //{
-        //    //unitList.Add(new Unit(name_, address_));
-        //    return true;
-        //}
+        List<T> list<T>()
+        {
+            if (typeof(T) == typeof(Unit))
+                return unitList as List<T>;
+            if (typeof(T) == typeof(Subject))
+                return subjectList as List<T>;
+            if (typeof(T) == typeof(Student))
+                return studentList as List<T>;
+            return null;
+        }
         public bool AddUnit(string name_, string address_)
         {
             this.unitList.Add(new Unit(name_, address_));
             return true;
         }
-        public bool AddUnit(Unit u)
+
+        public bool Add<T>(T Obj)
         {
-            this.unitList.Add(u);
+            var tmp = list<T>();
+            if (tmp == null || tmp.Contains(Obj)) return false;
+            tmp.Add(Obj);
             return true;
         }
-        public bool AddSubject(Subject sub_)
-        {
-            if (this.subjectList.Contains(sub_))
-                return false;
-            else
-            {
-                this.subjectList.Add(sub_);
-                //this.subjectList.Add(new Subject(sub_.Name, sub_.FieldOfStudy, sub_.SpecjalityOfStudy, sub_.Semestr, sub_.HowManyHours));
-                return true;
-            }
 
-        }
 
-        public bool AddStudent(Student stu_)
-        {
-            if (studentList.Contains(stu_))
-                return false;
-            else
-            {
-                studentList.Add(stu_);
-                //this.studentList.Add(new Student(stu_.Name, stu_.Surname, stu_.BirthDate, stu_.FieldOfStudy, stu_.SpecjalityOfStudy, stu_.YearOfStudy, stu_.Group, stu_.IndexNumberInCollege));
-                return true;
-            }
+        //public bool AddUnit(Unit u)
+        //{
+        //    this.unitList.Add(u);
+        //    return true;
+        //}
+        //public bool AddSubject(Subject sub_)
+        //{
+        //    if (this.subjectList.Contains(sub_))
+        //        return false;
+        //    else
+        //    {
+        //        this.subjectList.Add(sub_);
+        //        //this.subjectList.Add(new Subject(sub_.Name, sub_.FieldOfStudy, sub_.SpecjalityOfStudy, sub_.Semestr, sub_.HowManyHours));
+        //        return true;
+        //    }
 
-        }
+        //}
 
-        public bool AddLecturer(Lecturer l, string nameOfUnit_)
-        {
-            for (int i = 0; i < unitList.Count; i++)
-            {
-                if (l == null || unitList[i].lecturerList.Contains(l))
-                {
-                    return false;
-                }
-                if (unitList[i].Name == nameOfUnit_)
-                {
-                    unitList[i].AddLecturer(l);
-                    return true;
-                }
-            }
-            return false;
-        }
+        //public bool AddStudent(Student stu_)
+        //{
+        //    if (studentList.Contains(stu_))
+        //        return false;
+        //    else
+        //    {
+        //        studentList.Add(stu_);
+        //        //this.studentList.Add(new Student(stu_.Name, stu_.Surname, stu_.BirthDate, stu_.FieldOfStudy, stu_.SpecjalityOfStudy, stu_.YearOfStudy, stu_.Group, stu_.IndexNumberInCollege));
+        //        return true;
+        //    }
+
+        //}
+
+        //public bool AddLecturer(Lecturer l, string nameOfUnit_)
+        //{
+        //    for (int i = 0; i < unitList.Count; i++)
+        //    {
+        //        if (l == null || unitList[i].lecturerList.Contains(l))
+        //        {
+        //            return false;
+        //        }
+        //        if (unitList[i].Name == nameOfUnit_)
+        //        {
+        //            unitList[i].AddLecturer(l);
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
 
         public string StudentsInfo()
         {
@@ -133,7 +148,7 @@ namespace Univeristy
 
         public bool TransferLecturer(Lecturer l_, string oldUnit_, string newUnit_)
         {
-            if((AddLecturer(l_,newUnit_)) == true)
+            if((Add(l_)) == true)
             { 
                 for (int i = 0; i < unitList.Count; i++)
                 {
@@ -142,7 +157,7 @@ namespace Univeristy
                         if (unitList[i].DeleteLecturer(l_) == true)
                         {
                             unitList[i].DeleteLecturerEasier(l_);
-                            AddLecturer(l_, newUnit_);
+                            Add(l_);
                             return true;
                         }
                     }

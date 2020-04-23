@@ -16,11 +16,11 @@ namespace Univeristy
 
         }
 
-        public Person(string name_, string surname_, DateTime birthDate_)
+        public Person(string name_, string surname_, DateTime? birthDate_ = null)
         {
             this.Name = name_;
             this.Surname = surname_;
-            this.BirthDate = birthDate_;
+            this.BirthDate = birthDate_ != null ? (DateTime)birthDate_ : DateTime.Now;
         }
 
         public virtual string ShowInfo()

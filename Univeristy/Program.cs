@@ -25,12 +25,12 @@ namespace Univeristy
 
             {
                 // przedmioty
-                subjects.ToList().ForEach(a => w.AddSubject(
+                subjects.ToList().ForEach(a => w.Add(
                     new Subject(a, "Informatyka", "Inżynieria Oprogramowania", rnd.Next(1, 7), rnd.Next(1, 3) * 15)
                 ));
                 // studenci
                 for (int i = 1000; i < 1020; i++)
-                    w.AddStudent(new Student(
+                    w.Add(new Student(
                         names[rnd.Next(names.Length)],
                         surnames[rnd.Next(surnames.Length)],
                         DateTime.Now.AddYears(-27).AddDays(rnd.Next(365 * 4)),
@@ -40,7 +40,7 @@ namespace Univeristy
                 units.ToList().ForEach(a =>
                 {
                     var j = new Unit(a, "Dąbroskiwgo 69");
-                    w.AddUnit(j);
+                    w.Add(j);
                     for (int i = 0; i < 3; i++)
                         j.AddLecturer(new Lecturer(
                             names[rnd.Next(names.Length)],
@@ -66,7 +66,10 @@ namespace Univeristy
             // wypisuje studentów z ocenami
             //w.Info<Student>(true, s => s.srednia > 0);
             // dodaje studenta
-            //w.Dodaj(new Student("Ela", "Nowa", null, "IO", "Informatyka", 2, 4, 123));
+
+            //public Student(string name_, string surname_, DateTime birthDate_, string fieldOfStudy_, string specjalityOfStudy_, int yearOfStudy_, int group_, int indexNumberInCollege_)
+            // w.Add(new Student("Ela", "Nowa", null", "IO", "Informatyka", 2, 4, 123));
+            w.Add(new Student("Ela", "Nowa", Convert.ToDateTime(null), "IO", "Informatyka", 2, 4, 123));
 
             Console.WriteLine("\nStudenci:");
             Console.WriteLine(w.StudentsInfo());
